@@ -16,10 +16,10 @@ RUN curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py && \
     rm get-pip.py
 
 # Clone the alignment-handbook repository and install it
-RUN git clone https://github.com/huggingface/alignment-handbook.git && \
+RUN git clone https://github.com/sergeykochetkov/alignment-handbook.git && \
     cd alignment-handbook && \
     python3 -m pip install .
 
 # Install additional dependencies
 RUN python3 -m pip install flash-attn --no-build-isolation && \
-    python3 -m pip install huggingface_hub==0.24.4
+    python3 -m pip install --upgrade huggingface_hub
