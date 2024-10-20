@@ -25,21 +25,20 @@ cd ./alignment-handbook/
 python -m pip install .
 
 
-python -m pip install flash-attn --no-build-isolation
+python -m pip install flash-attn==2.6.3 --no-build-isolation
 
 pip install huggingface_hub==0.24.4
  
 # Docker
  
-docker build -t alignment-handbook .
-docker tag alignmanet-handbook docker-hosted.artifactory.tcsbank.ru/biglm/alignment-handbook
-docker push docker-hosted.artifactory.tcsbank.ru/biglm/alignment-handbook
+docker build --no-cache  -t alignment-handbook .
+docker tag alignment-handbook docker-hosted.artifactory.tcsbank.ru/biglm/alignment-handbook:release_oct_2
+sudo docker push docker-hosted.artifactory.tcsbank.ru/biglm/alignment-handbook:release_oct_2
 
 
  # RUN
 
-docker run --gpus all -v /mnt/s.kochetkov:/workspace --name sergey_alignment_handbook -d -t docker-hosted.
-artifactory.tcsbank.ru/biglm/alignment-handbook
+docker run --gpus all -v /mnt/s.kochetkov:/workspace --name sergey_alignment_handbook -d -t docker-hosted.artifactory.tcsbank.ru/biglm/alignment-handbook
 
 docker run --gpus all --name sergey_alignment_handbook -d -t docker-hosted.artifactory.tcsbank.ru/biglm/alignment-handbook
 
@@ -49,3 +48,6 @@ cd /alignment-handbook
  ACCELERATE_LOG_LEVEL=info accelerate launch --config_file recipes/accelerate_configs/multi_gpu.yaml --num_processes=1 scripts/run_sft.py recipes/zephyr-7b-beta/sft/config_qlora.yaml --load_in_4bit=true
 
 CUDA_VISIBLE_DEVICES=2 ; ACCELERATE_LOG_LEVEL=info accelerate launch --config_file recipes/accelerate_configs/multi_gpu.yaml --num_processes=1 scripts/run_dpo.py recipes/zephyr-7b-beta/dpo/config_qlora.yaml
+
+---------
+
