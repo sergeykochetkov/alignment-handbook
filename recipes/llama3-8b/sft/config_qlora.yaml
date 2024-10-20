@@ -1,5 +1,5 @@
 # Model arguments
-model_name_or_path: Orenguteng/Llama-3-8B-Lexi-Uncensored
+model_name_or_path: /alignment-handbook/models
 model_revision: main
 torch_dtype: bfloat16
 attn_implementation: flash_attention_2

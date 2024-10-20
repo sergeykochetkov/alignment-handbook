@@ -31,7 +31,10 @@ pip install huggingface_hub==0.24.4
  
 # Docker
  
- docker build -t alignment-handbook .
+docker build -t alignment-handbook .
+docker tag alignmanet-handbook docker-hosted.artifactory.tcsbank.ru/biglm/alignment-handbook
+docker push docker-hosted.artifactory.tcsbank.ru/biglm/alignment-handbook
+
 
  # RUN
 
