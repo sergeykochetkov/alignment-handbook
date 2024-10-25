@@ -1,5 +1,5 @@
 # Model arguments
-model_name_or_path: data/llama3-8b-sft-qlora
+model_name_or_path: /alignment-handbook/models
 torch_dtype: bfloat16
 attn_implementation: flash_attention_2
 
